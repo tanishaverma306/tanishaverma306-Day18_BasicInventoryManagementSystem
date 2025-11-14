@@ -1,0 +1,53 @@
+#include <stdio.h>
+int main () {
+    int ProductID[10], Quantity[10], num,a;
+    float Price[10], Total, highest, lowest;
+    char ProductName[10][50]; 
+    printf("Enter the number of products: ");
+    scanf("%d", &num);
+    for(int i = 0; i < num; i++) {
+        printf("Enter Product ID: ");
+        scanf("%d", &ProductID[i]);
+        printf("Enter Product Name: ");
+        scanf("%s", ProductName[i]);
+        printf("Enter Quantity: ");
+        scanf("%d", &Quantity[i]);
+        printf("Enter Price: ");
+        scanf("%f", &Price[i]);
+        Total = Quantity[i] * Price[i]; 
+        printf("Product ID: %d\n", ProductID[i]);
+        printf("Product Name: %s\n", ProductName[i]);
+        printf("Quantity: %d\n", Quantity[i]);
+        printf("Price: %f\n", Price[i]);
+        printf("Total Cost: %f\n\n", Total);
+    }
+    highest = Price[0];
+    lowest = Price[0];
+    for(int i = 1; i < num; i++) {
+        if(Price[i] > highest) {
+            highest = Price[i];
+        }
+        if(Price[i] < lowest) {
+            lowest = Price[i];
+        }
+    }
+    printf("Highest Price: %f\n", highest);
+    printf("Lowest Price: %f\n", lowest);
+
+
+    printf("Enter a product to search: ");
+    scanf("%d", &a);
+    int found = 0;
+    for(int i = 0; i < num; i++) {
+        if(ProductID[i] == a) {
+            printf("Product %d found: Product Name %s , Price %f, Quantity %d\n", a, ProductName[i], Price[i], Quantity[i]);
+            found = 1;
+        }
+    }
+    if(!found) {
+        printf("No product found with ProductID %d\n", a);
+    }
+
+    
+    return 0;
+}
